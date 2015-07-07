@@ -373,7 +373,7 @@ RenderPass Painter::determineRenderPasses(const StyleLayer& layer) {
         if (properties.antialias) {
             passes |= RenderPass::Translucent;
         }
-        if (properties.image.from.size() || alpha < 1.0f) {
+        if (!properties.image.from.empty() || alpha < 1.0f) {
             passes |= RenderPass::Translucent;
         } else {
             passes |= RenderPass::Opaque;
@@ -388,7 +388,7 @@ RenderPass Painter::determineRenderPasses(const StyleLayer& layer) {
 void Painter::renderBackground(const StyleLayer &layer_desc) {
     const BackgroundProperties& properties = layer_desc.getProperties<BackgroundProperties>();
 
-    if (properties.image.to.size()) {
+    if (!properties.image.to.empty()) {
         if ((properties.opacity >= 1.0f) != (pass == RenderPass::Opaque))
             return;
 

@@ -55,7 +55,7 @@ GlyphPBF::~GlyphPBF() {
 }
 
 void GlyphPBF::parse(FontStack &stack) {
-    if (!data.size()) {
+    if (data.empty()) {
         // If there is no data, this means we either haven't received any data, or
         // we have already parsed the data.
         return;
