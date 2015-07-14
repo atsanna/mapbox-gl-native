@@ -340,7 +340,7 @@ MapContext::RenderResult MapContext::renderSync(const TransformState& state, con
 
     return RenderResult {
         style->isLoaded(),
-        style->hasTransitions()
+        style->hasTransitions() || painter->needsAnimation()
     };
 }
 
